@@ -5,7 +5,11 @@
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Button Text="Press for Logs" Command="{Binding ButtonCommand}"/>
+        <Button Text="Press for Info" Command="{Binding ButtonCommand}" CommandParameter="Info"/>
+        <Button Text="Press for Warning" Command="{Binding ButtonCommand}" CommandParameter="Warn"/>
+        <Button Text="Press for Error" Command="{Binding ButtonCommand}" CommandParameter="Error"/>
+        <Button Text="Press for Real Error" Command="{Binding ButtonCommand}" CommandParameter="RealError"/>
+        <Button Text="Press for Critical" Command="{Binding ButtonCommand}" CommandParameter="Crit"/>
     </StackLayout>
 
 </ContentPage>

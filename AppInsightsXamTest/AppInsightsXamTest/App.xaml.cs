@@ -1,6 +1,7 @@
 using AppInsightsXamTest.ViewModels;
 using AppInsightsXamTest.Views;
 
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -39,7 +40,16 @@ namespace AppInsightsXamTest
                 s.AddLogging(logging =>
                 {
                     logging.ClearProviders();
+
                     logging.AddConsole();
+                    logging.AddApplicationInsights(
+                        configureTelemetryConfiguration: config =>
+                        {
+                            config.ConnectionString = "";
+                        },
+                        configureApplicationInsightsLoggerOptions: (options) => { });
+
+                    logging.SetMinimumLevel(LogLevel.Information);
                 });
             });
         }
