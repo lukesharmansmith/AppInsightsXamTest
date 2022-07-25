@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightsXamTest", "AppInsightsXamTest\AppInsightsXamTest\AppInsightsXamTest.csproj", "{6D6BF169-5476-4DBC-AA91-B46D9FF43EB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightsXamTest.Android", "AppInsightsXamTest\AppInsightsXamTest.Android\AppInsightsXamTest.Android.csproj", "{16C49304-14D8-4C69-A1A4-64D5D46A5359}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D6BF169-5476-4DBC-AA91-B46D9FF43EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6BF169-5476-4DBC-AA91-B46D9FF43EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6BF169-5476-4DBC-AA91-B46D9FF43EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6BF169-5476-4DBC-AA91-B46D9FF43EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C49304-14D8-4C69-A1A4-64D5D46A5359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C49304-14D8-4C69-A1A4-64D5D46A5359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C49304-14D8-4C69-A1A4-64D5D46A5359}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{16C49304-14D8-4C69-A1A4-64D5D46A5359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C49304-14D8-4C69-A1A4-64D5D46A5359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C49304-14D8-4C69-A1A4-64D5D46A5359}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3997B9FA-18EA-449F-877C-37E7CD2BF6EE}
+	EndGlobalSection
+EndGlobal
