@@ -2,9 +2,7 @@
 using System.Windows.Input;
 
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 using Prism.Commands;
 using Prism.Navigation;
@@ -13,13 +11,13 @@ namespace AppInsightsXamTest.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private readonly IOptions<TelemetryConfiguration> config;
+        private readonly TelemetryClient telemetryClient;
         private readonly ILogger<MainPageViewModel> logger;
 
-        public MainPageViewModel(INavigationService navigationService, IOptions<TelemetryConfiguration> config, ILogger<MainPageViewModel> logger)
+        public MainPageViewModel(INavigationService navigationService, TelemetryClient telemetryClient, ILogger<MainPageViewModel> logger)
             : base(navigationService)
         {
-            this.config = config;
+            this.telemetryClient = telemetryClient;
             this.logger = logger;
 
             this.Title = "Main Page";
@@ -48,7 +46,9 @@ namespace AppInsightsXamTest.ViewModels
                 case "Crit":
                     this.logger.LogCritical("Nuke it from orbit, its the only way");
                     break;
-
+                case "CustomEvent":
+                    this.telemetryClient.TrackEvent("CustomEventA");
+                    break;
                 default:
                     break;
             }

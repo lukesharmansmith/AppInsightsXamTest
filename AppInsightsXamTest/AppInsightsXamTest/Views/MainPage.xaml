@@ -10,6 +10,7 @@
         <Button Text="Press for Error" Command="{Binding ButtonCommand}" CommandParameter="Error"/>
         <Button Text="Press for Real Error" Command="{Binding ButtonCommand}" CommandParameter="RealError"/>
         <Button Text="Press for Critical" Command="{Binding ButtonCommand}" CommandParameter="Crit"/>
+        <Button Text="Press for Custom Event" Command="{Binding ButtonCommand}" CommandParameter="CustomEvent"/>
     </StackLayout>
 
-</ContentPage>
+</ContentPage>  
