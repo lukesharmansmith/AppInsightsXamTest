@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppInsightsXamTest.Views.MainPage"
              Title="{Binding Title}">
-
+    
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Entry Text="{Binding CustomMessage}" />
         <Button Text="Press for Info" Command="{Binding ButtonCommand}" CommandParameter="Info"/>
         <Button Text="Press for Warning" Command="{Binding ButtonCommand}" CommandParameter="Warn"/>
         <Button Text="Press for Error" Command="{Binding ButtonCommand}" CommandParameter="Error"/>
