@@ -16,6 +16,7 @@ namespace AppInsightsXamTest.ViewModels
 
         private string customMessage;
 
+        /// Standard <see cref="ILogger{TCategoryName}"/> and <see cref="TelemetryClient"/> can be injected using DI.
         public MainPageViewModel(INavigationService navigationService, TelemetryClient telemetryClient, ILogger<MainPageViewModel> logger)
             : base(navigationService)
         {

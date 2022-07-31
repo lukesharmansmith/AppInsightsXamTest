@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 
 using AppInsightsXamTest.ViewModels;
 using AppInsightsXamTest.Views;
@@ -48,21 +49,23 @@ namespace AppInsightsXamTest
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 
+            // MS DI handling - allows mixing container types.
             containerRegistry.RegisterServices(s =>
             {
                 var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "telemetryStore");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
-                }  
+                }
 
                 // Server channel allows us to save telemetry to a file location to handle offline scenarios, name is slightly misleading.
+                // Default batch sending time is 30 seconds, any telemetry that cannot be sent will be stored offline.
                 var channel = new ServerTelemetryChannel
                 {
                     StorageFolder = path
                 };
 
-                s.Configure<TelemetryConfiguration>(config => 
+                s.Configure<TelemetryConfiguration>(config =>
                 {
                     config.TelemetryChannel = channel;
                     channel.Initialize(config);
@@ -76,7 +79,7 @@ namespace AppInsightsXamTest
                     logging.AddApplicationInsights(
                         configureTelemetryConfiguration: config =>
                         {
-                            config.ConnectionString = "";
+                            config.ConnectionString = "<AI Connection String>";
                         },
                         configureApplicationInsightsLoggerOptions: (options) => { });
 
@@ -91,13 +94,13 @@ namespace AppInsightsXamTest
             });
         }
 
-        protected override void OnSleep()
+        protected override async void OnSleep()
         {
             // If going background then force a telemetry send.
-            if(this.telemetryClient != null)
+            if (this.telemetryClient != null)
             {
                 this.logger.LogDebug("Going to sleep Zzzzzzz (Flushing telemetry)");
-                this.telemetryClient.Flush();
+                await this.telemetryClient.FlushAsync(CancellationToken.None);
             }
 
             base.OnSleep();
